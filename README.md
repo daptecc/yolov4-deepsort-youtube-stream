@@ -2,9 +2,9 @@
 
 A computer vision web-app that tracks people in youtube videos using neural networks and object tracking.
 
-![](app/static/rendered/clips-lakers-10sec.yolov4.512.gif)
-
 ![](app/static/rendered/pedestrian-overpass.512.gif)
+
+![](app/static/rendered/clips-lakers-10sec.yolov4.512.gif)
 
 ## How It Works
 
@@ -20,13 +20,13 @@ These two stages interact dynamically to track as consistently as possible. If t
 
 ### Object detection and tracking
 
-Detection is accomplished via a YOLO v4 implementation from [here](https://github.com/Tianxiaomo/pytorch-YOLOv4). Tracking is accomplished using DeepSORT implementation from [here](https://github.com/ZQPei/deep_sort_pytorch).
+Detection is accomplished via a YOLO v4 implementation from [https://github.com/Tianxiaomo/pytorch-YOLOv4](https://github.com/Tianxiaomo/pytorch-YOLOv4). Tracking is accomplished using DeepSORT implementation from [https://github.com/ZQPei/deep_sort_pytorc](https://github.com/ZQPei/deep_sort_pytorch).
 
 Yolo v4 weights
-- yolov4.pth [https://drive.google.com/open?id=1wv_LiFeCRYwtpkqREPeI13-gPELBDwuJ](https://drive.google.com/open?id=1wv_LiFeCRYwtpkqREPeI13-gPELBDwuJ)
+- yolov4.pth [(https://drive.google.com/open?id=1wv_LiFeCRYwtpkqREPeI13-gPELBDwuJ)](https://drive.google.com/open?id=1wv_LiFeCRYwtpkqREPeI13-gPELBDwuJ)
 
 DeepSORT weights
-- ckpt.t7 [https://drive.google.com/drive/folders/1xhG0kRH1EX5B9_Iz8gQJb7UNnn_riXi6](https://drive.google.com/drive/folders/1xhG0kRH1EX5B9_Iz8gQJb7UNnn_riXi6)
+- ckpt.t7 [(https://drive.google.com/drive/folders/1xhG0kRH1EX5B9_Iz8gQJb7UNnn_riXi6)](https://drive.google.com/drive/folders/1xhG0kRH1EX5B9_Iz8gQJb7UNnn_riXi6)
 
 ### Video Streaming
 
