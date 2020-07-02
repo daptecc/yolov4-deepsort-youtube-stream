@@ -1,0 +1,14 @@
+ttest
+*.weights
+*.pth
+*.onnx
+*.engine
+
+__pycache__
+.idea
+.vscode
+runs
+log
+
+*.jpg
+data/outcome

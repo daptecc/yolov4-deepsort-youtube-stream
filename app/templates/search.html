@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<style media="screen" type="text/css">
+    input[type=submit] {
+        width: 38em; 
+        height: 3em;
+        font-size: 14;
+    }
+    input[type="text"]{
+        width: 40em;
+        line-height: 2em;
+    }
+    body{text-align: center}
+</style>
+    <h1> Stream video from YouTube with YOLO v4 and DeepSORT:</h1>
+    <form action="search" method="POST" novalidate>
+        {{ form.hidden_tag() }}
+        <p>
+            {{ form.url.label }}<br>
+            {{ form.url }}
+            {% for error in form.url.errors %}
+            <br>
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+        <p>
+            {{ form.submit() }}
+            <br><br><br><br><br><br>
+        </p>
+    </form>
+    <h2>Or try one of these examples: </h2>
+        <p>
+            <div id ="examples">
+            <style type="text/css">
+                #examples a:link {
+                    display: block;
+                    font-weight: normal;
+                    font-size: 18px;
+                }
+            </style>
+	    <a href="{{ url_for('stream', url = 'https://www.youtube.com/watch?v=aUdKzb4LGJI') }}">Pedestrian overpass</a><br>
+	    <a href="{{ url_for('stream', url = 'https://www.youtube.com/watch?v=GUNx3gJyZGw&pbjreload=101') }}">Clippers vs Lakers 3/8/2020 full game highlights</a><br> 
+            </div>
+        </p>
+        <br><br><br><br>
+    <h2>Or some pre-rendered gifs: </h2>
+        <p>
+            <div id ="examples">
+		<a href="/static/rendered/pedestrian-overpass.512.gif"> Example 1 </a><br>"
+                <a href="/static/rendered/clips-lakers-10sec.yolov4.512.gif"> Example 2 </a><br>
+            </div>
+        </p>
+{% endblock %}

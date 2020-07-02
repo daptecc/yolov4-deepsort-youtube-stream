@@ -1,0 +1,33 @@
+<html>
+    <head>
+        {% if title %}
+        <title>app | {{ title }}</title>
+        {% else %}
+        <title>App</title>
+        {% endif %}
+    </head>
+    <body>
+        <div> <b>app | </b> 
+            <style media="screen" type="text/css">
+                a:link {
+                    margin-left: 10px;
+                    font-weight: bold;
+                    font-size: 16;
+                }
+            </style>
+            <a href="{{ url_for('index') }}"> Home </a> 
+            <a href="{{ url_for('search') }}"> Stream </a>
+        </div>
+        <hr>
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+        <ul>
+            {% for message in messages %}
+            <li> {{ message }} </li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+        {% endwith %}
+        {% block content %} {% endblock %}
+    </body>
+</html>
