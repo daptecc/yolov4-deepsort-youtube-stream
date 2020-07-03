@@ -1,6 +1,6 @@
 # App using YOLOv4 + DeepSORT for Youtube videos
 
-A computer vision web-app that tracks people in youtube videos using neural networks and object tracking.
+A web app that tracks people in youtube videos using YOLOv4 object detection and DeeoSORT object tracking.
 
 ![](app/static/rendered/pedestrian-overpass.yolov4.tracked.512.gif)
 
