@@ -18,8 +18,8 @@ class VideoStream(object):
     half = False
     device = 'cuda'
     
-    model_path = 'app/static/model/'
-    model_weights_tracker = f'{model_path}/deep_sort/deep/checkpoint/ckpt.t7'
+    model_path = 'app/static/model'
+    model_weights_tracker = f'{model_path}/deepsort/deep/checkpoint/ckpt.t7'
     model_weights_detector = f'{model_path}/yolov4/weights/yolov4.weights'
     model_config_detector = f'{model_path}/yolov4/cfg/yolov4.cfg'
     coco_names = f'{model_path}/yolov4/data/coco.names'
@@ -51,6 +51,11 @@ class VideoStream(object):
         
         self.names = utils.load_classes(self.coco_names)
         self.n_classes = len(self.names)
+        
+#         fps = self._video.get(cv2.CAP_PROP_FPS)
+#         w = int(self._video.get(cv2.CAP_PROP_FRAME_WIDTH))
+#         h = int(self._video.get(cv2.CAP_PROP_FRAME_HEIGHT))
+#         self.vid_writer = cv2.VideoWriter('test.mp4', cv2.VideoWriter_fourcc(*'mp4v'), fps, (w, h))
 
         
     def _load_networks(self):
@@ -65,9 +70,10 @@ class VideoStream(object):
     def process_stream(self):
         while (self._video.isOpened()):
             read_success, frame = self._video.read()
-            self.orig_height, self.orig_width = frame.shape[:2]
             
             if read_success:
+                self.orig_height, self.orig_width = frame.shape[:2]
+                
                 # run Detection
                 sized = cv2.resize(frame, (self.detector.width, self.detector.height))
                 sized = cv2.cvtColor(sized, cv2.COLOR_BGR2RGB)
@@ -118,6 +124,8 @@ class VideoStream(object):
                         except:
                             continue
 
+#                 self.vid_writer.write(frame)
+                    
                 encode_success, jpeg = cv2.imencode('.jpg', frame)
                 frame = jpeg.tobytes()
                 print(f'yield frame len(det)={len(det)}')

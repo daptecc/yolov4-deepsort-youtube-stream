@@ -2,9 +2,9 @@
 
 A computer vision web-app that tracks people in youtube videos using neural networks and object tracking.
 
-![](app/static/rendered/pedestrian-overpass.512.gif)
+![](app/static/rendered/pedestrian-overpass.yolov4.tracked.512.gif)
 
-![](app/static/rendered/clips-lakers-10sec.yolov4.512.gif)
+![](app/static/rendered/clips-lakers-10sec.yolov4.tracked.512.gif)
 
 ## How It Works
 
