@@ -6,11 +6,11 @@ import pafy
 import numpy as np
 import torch
 
-from app.static.model.yolov4.tool.utils import *
-from app.static.model.yolov4.tool.torch_utils import *
-from app.static.model.yolov4.tool.darknet2pytorch import Darknet
-from app.static.model.deepsort import DeepSort
-from app.static.model.utils import utils
+from model.yolov4.tool.utils import *
+from model.yolov4.tool.torch_utils import *
+from model.yolov4.tool.darknet2pytorch import Darknet
+from model.deepsort import DeepSort
+from model.utils import utils
 
 
 class VideoStream(object):
@@ -18,7 +18,7 @@ class VideoStream(object):
     half = False
     device = 'cuda'
     
-    model_path = 'app/static/model'
+    model_path = 'model'
     model_weights_tracker = f'{model_path}/deepsort/deep/checkpoint/ckpt.t7'
     model_weights_detector = f'{model_path}/yolov4/weights/yolov4.weights'
     model_config_detector = f'{model_path}/yolov4/cfg/yolov4.cfg'

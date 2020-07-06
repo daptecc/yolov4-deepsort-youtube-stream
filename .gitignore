@@ -1,5 +1,5 @@
-app/static/model/yolov4/weights/*
-app/static/model/deepsort/deep/checkpoint/*
+app/model/yolov4/weights/*
+app/model/deepsort/deep/checkpoint/*
 
 *.com
 *.class

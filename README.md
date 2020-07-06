@@ -34,7 +34,11 @@ Streaming video from YouTube is accomplished using *pafy*. *Pafy* optionally dep
 
 ### Deployment
 
-App is built with *Flask*. *Flask* needs to be installed.
+App is built with *FastAPI*. *FastAPI* needs to be installed.
+
+```
+uvicorn main:app --host 0.0.0.0 --reload
+```
 
 ## License
 

@@ -1,6 +1,89 @@
-{% extends "base.html" %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="{{ url_for('static', path='/imgs/favicon.ico') }}">
 
-{% block content %}
-    <h1>Testing YOLOv4 and DeepSORT youtube streams</h1>
+    <title>Yolov4 DeepSORT youtube stream app</title>
 
-{% endblock %}
+    <!-- Bootstrap core CSS -->
+    <link href="{{ url_for('static', path='/css/bootstrap.min.css') }}" rel="stylesheet">
+
+
+    <!-- Custom styles for this template -->
+    <link href="{{ url_for('static', path='/css/jumbotron.css') }}" rel="stylesheet">
+    
+
+  </head>
+
+  <body>
+
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">Yolov4 DeepSORT youtube stream test</a>
+        </div>
+      </div>
+    </nav>
+
+    <div class="jumbotron">
+      <div class="container">
+        <h3>Enter a youtube link:</h3>
+		<form action="stream" method="post">
+                <br>
+                <input id="url" name="url" type="url" size=50>
+                <br><br>
+                <input type="submit">
+            </form>
+      </div>
+    </div>
+
+    <div class="container">
+      <!-- Example row of columns -->
+      <div class="row">
+        <div class="col-md-4">
+          <h3>Try one of these clips:</h3>
+	  <a href="#" onclick="Javascript:fill_input('https://www.youtube.com/watch?v=aUdKzb4LGJI');">Pedestrian overpass</a>
+	  <br>
+	  <a href="#" onclick="Javascript:fill_input('https://www.youtube.com/watch?v=GUNx3gJyZGw&pbjreload=101');">Clippers vs Lakers 3/8/2020 full game highlights</a>
+	  <br>
+	  <script>
+	    function fill_input(url) {
+  		document.getElementById("url").value = url;
+	    }
+	  </script>
+	</div>
+        <div class="col-md-4">
+          <h3>Some pre-rendered gifs:</h3>
+          <a href="/static/rendered/pedestrian-overpass.yolov4.tracked.512.gif"> Example 1 </a><br>
+          <a href="/static/rendered/clips-lakers-10sec.yolov4.tracked.512.gif"> Example 2 </a><br>
+	   </div>
+      </div>
+
+      <hr>
+
+      <footer>
+        <p>&copy; No one</p>
+      </footer>
+    </div> <!-- /container -->
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script>window.jQuery || document.write('<script src="../static/js/jquery.min.js"><\/script>')</script>
+    <script src="{{ url_for('static', path='/js/bootstrap.min.js') }}"></script>
+  </body>
+</html>
