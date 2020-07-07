@@ -67,7 +67,7 @@ class VideoStream(object):
             self.detector.half()
 
         
-    def process_stream(self):
+    def process_stream(self, track=True):
         while (self._video.isOpened()):
             read_success, frame = self._video.read()
             
@@ -94,6 +94,7 @@ class VideoStream(object):
                     det[:,3] *= self.orig_height
 
                     bbox_xywh = []
+                    bbox_xyxy = []
                     confs = []
 
                     # track detections
@@ -112,17 +113,21 @@ class VideoStream(object):
                         bbox_xywh.append(obj)
                         confs.append([conf.item()])
                         label = '%s %.2f' % (self.names[int(cls)], conf)
-
-                        try:
-                            outputs = self.tracker.update((torch.Tensor(bbox_xywh)),
-                                                      (torch.Tensor(confs)),
-                                                      frame)
-                            if len(outputs) > 0:
-                                bbox_xyxy = outputs[:, :4]
-                                identities = outputs[:, -1]
-                                frame = utils.draw_boxes(frame, bbox_xyxy, identities)
-                        except:
-                            continue
+                        
+                        if not track:
+                            bbox_xyxy.append(self.tracker._xywh_to_xyxy(obj, frame))
+                            frame = utils.draw_boxes(frame, bbox_xyxy)
+                        else:
+                            try:
+                                outputs = self.tracker.update((torch.Tensor(bbox_xywh)),
+                                                          (torch.Tensor(confs)),
+                                                          frame)
+                                if len(outputs) > 0:
+                                    bbox_xyxy = outputs[:, :4]
+                                    identities = outputs[:, -1]
+                                    frame = utils.draw_boxes(frame, bbox_xyxy, identities)
+                            except:
+                                continue
 
 #                 self.vid_writer.write(frame)
                     

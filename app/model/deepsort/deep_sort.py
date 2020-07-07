@@ -68,7 +68,10 @@ class DeepSort(object):
         bbox_tlwh[:, 1] = bbox_xywh[:, 1] - bbox_xywh[:, 3] / 2.
         return bbox_tlwh
 
-    def _xywh_to_xyxy(self, bbox_xywh):
+    def _xywh_to_xyxy(self, bbox_xywh, orig_img=None):
+        if orig_img is not None:
+            self.height, self.width = orig_img.shape[:2]
+            
         x, y, w, h = bbox_xywh
         x1 = max(int(x - w / 2), 0)
         x2 = min(int(x + w / 2), self.width - 1)
