@@ -34,10 +34,16 @@ Streaming video from YouTube is accomplished using *pafy*. *Pafy* optionally dep
 
 ### Deployment
 
-App is built with *FastAPI*. *FastAPI* needs to be installed.
+Build docker image:
 
 ```
-uvicorn main:app --host 0.0.0.0 --reload
+docker build -t yolo4-deepsort-youtube .
+```
+
+Run docker container:
+
+```
+docker run -d --runtime=nvidia -e NVIDIA_DRIVER_CAPABILITIES=compute,utility -e NVIDIA_VISIBLE_DEVICES=all --name yolo4-deepsort-youtube-container -p 80:80 yolo4-deepsort-youtube
 ```
 
 ## License
