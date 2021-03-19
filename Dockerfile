@@ -12,7 +12,7 @@ RUN curl -fSsL -O https://bootstrap.pypa.io/get-pip.py && \
         rm get-pip.py
 
 #FROM tiangolo/uvicorn-gunicorn-fastapi:python3.6
-RUN pip install --no-cache-dir uvicorn gunicorn fastapi aiofiles torch==1.3.1 torchvision==0.4.2 opencv-python pafy youtube_dl pillow scipy Jinja2 python-multipart numpy==1.14.5
+RUN pip install --no-cache-dir uvicorn gunicorn fastapi aiofiles torch==1.3.1 torchvision==0.4.2 opencv-python pafy youtube_dl pillow==8.1.1 scipy Jinja2 python-multipart numpy==1.14.5
 
 COPY ./start.sh /start.sh
 RUN chmod +x /start.sh
